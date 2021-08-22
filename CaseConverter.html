@@ -21,7 +21,7 @@
     }
     button {
       margin-top: 5px;
-      margin-right: 10px;
+      margin-right: 8.5px;
       background-color: aquamarine;
       border-color: rgb(0, 0, 0);
     }
@@ -35,6 +35,7 @@
       <button id="lower-case">Lower Case</button>
       <button id="proper-case">Proper Case</button>
       <button id="sentence-case">Sentence Case</button>
+      <button id="save-text-file">Save as .txt</button>
     </div>
   </div>
 
@@ -71,6 +72,19 @@
         document.getElementById("myText").value = words.join(" ")
     })
 
+    document.getElementById("save-text-file").addEventListener("click", function() {
+        let text = document.getElementById("myText").value
+        var Link = document.createElement('a');
+        Link.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+        Link.setAttribute('download', "text");
+
+        Link.style.display = 'none';
+        document.body.appendChild(Link);
+
+        Link.click();
+
+        document.body.removeChild(Link);
+    })
   </script>
 
 
